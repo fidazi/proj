@@ -1,0 +1,213 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hospitals</title>
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet"> <!-- For using icons -->
+</head>
+<style>
+.rcontainer {
+    padding: 10px;
+}
+.rheader {
+    background-color: #fff;
+    color: #555;
+    padding: 10px;
+    text-align: left;
+}
+.rcontainer .search-box {
+    display: flex;
+    align-items: center;
+    margin-bottom: 20px;
+}
+
+.search-box input {
+    flex: 1;
+    padding: 10px;
+    font-size: 16px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+}
+
+.search-box button {
+    background-color: #0056b3;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    margin-left: 10px;
+    border-radius: 5px;
+    cursor: pointer;
+}
+.search-box button:hover{
+    background: #0056b3;
+}
+
+.hospital-link {
+    display: flex;
+    align-items: center;
+    width: 100%;
+    padding: 15px;
+    margin: 10px 0;
+    background-color: #fff;
+    color: #555;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    cursor: pointer;
+    text-align: left;
+    font-size: 16px;
+}
+
+.hospital-link:hover {
+    background-color: #007bff;
+    color: white;
+}
+
+.hospital-link img {
+    margin-right: 15px;
+    width: 40px;  /* Adjust the logo size as per your preference */
+    height: 40px;
+}
+
+#hospitalList {
+    list-style-type: none;
+    padding: 0;
+}
+</style>
+<body>
+    <div id="home" class="header">
+        <div class="container">
+            <div class="navbar">
+                <div class="logo">
+                    <img src="element/logo.png" width="125px" alt="Logo">
+                </div>          
+                    <nav>
+                        <ul id="MenuItems">
+                            <li><a href="index.html#home">Home</a></li>
+                            <li><a href="index.html#about">About</a></li>
+                            <li><a href="index.html#values">Values</a></li>
+                            <li><a href="index.html#service">Service</a></li>
+                        </ul>
+                    </nav>
+                    <img src="element/menu.png" class="menu-icon" onclick="menutoggle()">
+            </div>
+        </div>
+    </div>
+    
+    <div class="rheader">
+        <h1 id="districtHeader">Hospitals in </h1>
+    </div>
+    <div class="rcontainer">
+        <div class="search-box">
+            <input type="text" id="hospitalSearchInput" placeholder="Search for a hospital" oninput="filterHospitals()">
+        </div>
+        <ul id="hospitalList">
+            <!-- Hospital list will be dynamically added here -->
+        </ul>
+    </div>
+    
+    <script src="script.js"></script>
+    <script>
+        // Updated districtHospitals to include hospital logos
+        const districtHospitals = {
+            Alappuzha: [
+                { name: 'Ebenezer Hospital Kayamkulm', logo: 'element/l1.png' },
+                { name: 'GOVT.TD Medical College Alappuzha', logo: 'element/l2.png' }
+            ],
+            Ernakulam: [
+                { name: 'Ernakulam District Hospital', logo: 'element/ernakulam-district-hospital-logo.png' },
+                { name: 'Lakeshore Hospital', logo: 'element/lakeshore-hospital-logo.png' },
+                { name: 'Amrita Hospital', logo: 'element/amrita-hospital-logo.png' }
+            ],
+            Idukki: [
+                { name: 'Idukki District Hospital', logo: 'element/idukki-district-hospital-logo.png' },
+                { name: 'High Range Hospital', logo: 'element/high-range-hospital-logo.png' }
+            ],
+            Kannur: [
+                { name: 'Kannur General Hospital', logo: 'element/kannur-general-hospital-logo.png' },
+                { name: 'Malabar Hospital', logo: 'element/malabar-hospital-logo.png' }
+            ],
+            Kasargod: [
+                { name: 'Kasargod Medical College', logo: 'element/kasargod-medical-college-logo.png' },
+                { name: 'Government Hospital Kasargod', logo: 'element/government-hospital-kasargod-logo.png' }
+            ],
+            Kollam: [
+                { name: 'Kollam District Hospital', logo: 'element/kollam-district-hospital-logo.png' },
+                { name: 'Travancore Medical Center', logo: 'element/travancore-medical-center-logo.png' }
+            ],
+            Kottayam: [
+                { name: 'Kottayam General Hospital', logo: 'element/kottayam-general-hospital-logo.png' },
+                { name: 'Caritas Hospital', logo: 'element/caritas-hospital-logo.png' }
+            ],
+            Kozhikode: [
+                { name: 'Kozhikode Beach Hospital', logo: 'element/kozhikode-beach-hospital-logo.png' },
+                { name: 'Baby Memorial Hospital', logo: 'element/baby-memorial-hospital-logo.png' }
+            ],
+            Malappuram: [
+                { name: 'Malappuram Medical College', logo: 'element/malappuram-medical-college-logo.png' },
+                { name: 'Arya Vaidya Sala', logo: 'element/arya-vaidya-sala-logo.png' }
+            ],
+            Palakkad: [
+                { name: 'Palakkad General Hospital', logo: 'element/palakkad-general-hospital-logo.png' },
+                { name: 'Palakkad Medical Center', logo: 'element/palakkad-medical-center-logo.png' }
+            ],
+            Pathanamthitta: [
+                { name: 'Pathanamthitta District Hospital', logo: 'element/pathanamthitta-district-hospital-logo.png' },
+                { name: 'Pushpagiri Hospital', logo: 'element/pushpagiri-hospital-logo.png' }
+            ],
+            Thiruvananthapuram: [
+                { name: 'Thiruvananthapuram Medical College', logo: 'element/thiruvananthapuram-medical-college-logo.png' },
+                { name: 'Sree Chitra Hospital', logo: 'element/sree-chitra-hospital-logo.png' }
+            ],
+            Thrissur: [
+                { name: 'Thrissur Government Hospital', logo: 'element/thrissur-government-hospital-logo.png' },
+                { name: 'Jubilee Mission Hospital', logo: 'element/jubilee-mission-hospital-logo.png' }
+            ],
+            Wayanad: [
+                { name: 'Wayanad General Hospital', logo: 'element/wayanad-general-hospital-logo.png' },
+                { name: 'Hill View Hospital', logo: 'element/hill-view-hospital-logo.png' }
+            ]
+        };
+
+        const params = new URLSearchParams(window.location.search);
+        const district = params.get('district');
+
+        const districtHeader = document.getElementById('districtHeader');
+        const hospitalList = document.getElementById('hospitalList');
+
+        if (district && districtHospitals[district]) {
+            districtHeader.textContent = `Hospitals in ${district}`;
+            hospitalList.innerHTML = districtHospitals[district]
+                .map(hospital => {
+                    return `
+                        <li>
+                            <a href="doctors.html?hospital=${encodeURIComponent(hospital.name)}" class="hospital-link">
+                                 <img src="${hospital.logo}" alt="${hospital.name} Logo"> 
+                                 ${hospital.name}
+                            </a>
+                        </li>`;
+                })
+                .join('');
+        } else {
+            districtHeader.textContent = 'District not found';
+            hospitalList.innerHTML = '<li>No hospitals available</li>';
+        }
+
+        function filterHospitals() {
+            const input = document.getElementById('hospitalSearchInput').value.toLowerCase();
+            const hospitals = hospitalList.getElementsByTagName('li');
+
+            for (let i = 0; i < hospitals.length; i++) {
+                const hospitalName = hospitals[i].textContent.toLowerCase();
+                if (hospitalName.includes(input)) {
+                    hospitals[i].style.display = ""; 
+                } else {
+                    hospitals[i].style.display = "none";
+                }
+            }
+        }
+    </script>
+</body>
+</html>

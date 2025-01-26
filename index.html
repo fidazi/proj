@@ -1,0 +1,471 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>QuickBook</title>
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<style>
+
+/* front page */
+.row{
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    margin: 70px 0;
+}
+.col-2:first-child{
+    flex: 1;
+    padding-right: 20px;
+}
+.col-2:last-child{
+    flex: 0 0 auto;
+    text-align: right;
+}
+.col-2 img{   
+    width: 500px;
+    display: block;
+    height: 500px;
+    margin-left: auto;
+    margin-right: 0;
+    margin-bottom: 0;
+}
+.col-2 h1{
+    font-size: 40px;
+    line-height: 60px;
+    margin: 20px 0;
+    color: #555;   
+}
+.col-2 p{
+    color: #555;
+    font-size: 20px;
+    margin-bottom: 20px;
+}
+.header .btn {
+    display: inline-block;
+    background: #007bff;
+    color: #fff;
+    padding: 10px 30px;
+    border-radius: 30px;
+    text-transform: uppercase;
+    font-size: 14px;
+    transition: background 0.3s ease;
+}
+.header .btn:hover {
+    background: #0056b3;
+}
+@media only screen and (max-width:800px){
+    .row{
+        flex-direction: column;
+        text-align: center;
+    }
+    .col-2{
+        flex: 1 1 100%;
+        text-align: center;
+    }
+    .col-2 img{
+        width: 100%;
+        height: auto;
+        margin: 20px 0;
+    }
+} 
+@media only screen and (max-width:600px){
+    .row{
+        text-align: center;
+    }
+    .col-2{
+        text-align: center;
+        flex-basis: 100%;
+    }
+    .col-2 img{
+        width: 100%;
+        height: auto;
+        margin: 20px 0;
+    }
+}
+.container-background{
+    background: radial-gradient(#fff, #99effa);
+    
+}
+/* about and value */
+.about-section,
+.values-section {
+    border-top: 2px solid #555;
+    padding: 50px 0;
+    background: radial-gradient(#fff, #99effa);
+}
+.about-section h2,
+.values-section h2 {
+    text-align: center;
+    font-size: 30px;
+    color: #555;
+    margin-bottom: 20px;
+}
+.about-section p,
+.values-section p {
+    color: #555;
+    text-align: center;
+    font-size: 18px;
+    margin: 0 auto;
+    max-width: 800px;
+}
+.values-section ul {
+    max-width: 800px;
+    margin: 20px auto 0;
+    list-style: none;
+    padding: 0;
+    color: #555;
+}
+.values-section ul li {
+    font-size: 18px;
+    margin-bottom: 10px;
+    text-align: left;
+}
+
+/* Merits Section */
+.merits-section {
+    padding: 50px 0;
+    background: radial-gradient(#fff, #99effa);
+    border-top: 2px solid #555; /* Adds a border line above the merits section */
+}
+.merits-section h2 {
+    text-align: center;
+    font-size: 36px;
+    color: #555;
+    margin-bottom: 20px;
+}
+.merit-boxes {
+    display: flex;
+    flex-direction: column; /* Stack boxes vertically */
+    gap: 30px;
+}
+.merit-box {
+    background-color: #fff;
+    border: 2px solid #555;
+    border-radius: 10px;
+    padding: 20px;
+    width: 100%; /* Make each box take the full width */
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    text-align: center;
+    transition: transform 0.3s ease;
+}
+.merit-box:hover {
+    transform: translateY(-10px);
+}
+.merit-box h3 {
+    font-size: 24px;
+    color: #333;
+    margin-bottom: 15px;
+}
+.merit-box p {
+    font-size: 16px;
+    color: #555;
+    margin-bottom: 15px;
+}
+.merit-box ul {
+    list-style: none;
+    padding-left: 0;
+}
+.merit-box ul li {
+    font-size: 16px;
+    color: #555;
+    text-align: left;
+    margin-bottom: 10px;
+}
+
+/* footer */
+footer {
+        background-color: #000;
+        padding: 20px;
+        margin-top: 0;
+        text-align: center;
+        border-top: 2px solid #555; /* Adds a border line above the merits section */
+        height: 400px;
+    }
+    .footer-content {
+        display: flex;
+        justify-content: space-between;
+        flex-wrap: wrap;
+        margin-bottom: 20px;
+    }
+    .footer-logo img {
+        width: 150px;
+        margin-right: auto;
+    }
+    .footer-nav ul {
+        list-style: none;
+        display: flex;
+        gap: 50px;
+        margin-top: 50px;
+    }
+    .footer-nav a {
+        text-decoration: none;
+        color: #fff;
+    }
+    .footer-info p {
+        color: #fff;
+        margin-top: 10px;
+    }
+    .footer-info ul {
+        list-style: none;
+        display: flex;
+        gap: 20px;
+        padding: 0;
+    }
+    .footer-info a {
+        text-decoration: none;
+        color: #fff;
+
+    }
+    .footer-about, .footer-contact {
+        text-align: left;
+        margin-top: 20px;
+    }
+    .footer-about p, .footer-contact p {
+        color: #fff;
+        font-size: 16px;
+        line-height: 1.6;
+    }
+    .footer-contact a {
+        color: #fff;
+        text-decoration: none;
+    }
+    .footer-contact a:hover {
+        text-decoration: underline;
+    }
+    @media only screen and (max-width:600px){
+        footer{
+            height: 900px;
+        }
+        .footer-content{margin-top: 20px;
+            flex-direction: column;
+        }
+        .footer-logo img{
+            width: 100px;
+        }
+        .footer-nav ul{
+            flex-direction: column;
+            gap: 10px;
+            margin-top: 20px;
+        }
+        .footer-info ul{
+            flex-direction: column;
+            gap: 10px;
+            margin-top: 20px;
+
+        }
+    }
+    /* Team Section */
+.team-section {
+    padding: 50px 0;
+    background: radial-gradient(#fff, #99effa);
+    border-top: 2px solid #555;
+}
+.team-section h2 {
+    text-align: center;
+    font-size: 36px;
+    color: #555;
+    margin-bottom: 40px;
+}
+.team-cards {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 30px;
+}
+.team-card {
+    background-color: #fff;
+    border: 2px solid #555;
+    border-radius: 10px;
+    padding: 20px;
+    width: 250px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    text-align: center;
+    transition: transform 0.3s ease;
+}
+.team-card:hover {
+    transform: translateY(-10px);
+}
+.team-card img {
+    width: 200px;
+    height: 200px;
+    border-radius: 20%;
+    margin-bottom: 10px;
+}
+.team-card h3 {
+    font-size: 20px;
+    color: #333;
+    margin-bottom: 10px;
+}
+.team-card p {
+    font-size: 16px;
+    color: #555;
+    margin-bottom: 5px;
+}
+</style>
+<body>
+<div  id="home" class="header">
+    <div class="container">
+        <div class="navbar">
+            <div class="logo">
+                <img src="element/logo.png" width="125px">
+            </div>          
+                <nav>
+                    <ul id="MenuItems">
+                        <li><a href="#home">Home</a></li>
+                        <li><a href="#about">About</a></li>
+                        <li><a href="#values">Values</a></li>
+                        <li><a href="#service">service</a></li>
+                    </ul>
+                </nav>
+                <img src="element/menu.png" class="menu-icon" onclick="menutoggle()">
+        </div>
+        <div class="row">
+            <div class="col-2">
+                <h1>
+                    BOOK APPOINTMENTS,<br>ANYTIME, ANYWHERE!!
+                </h1>    
+                <p>
+                    "Your Time Matters. Schedule Appointments With Ease And Convenience - Because Care Begins With Simplicity."
+                </p>
+                <a href="region.html" class="btn" onclick="navigateToLogin()">Make An Appointment &#8594;</a>
+            </div>
+            <div class="col-2">
+                <img src="element/bg.png" alt="Background Image">
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="container-background">
+    <img src="element/pagr.jpg" style="width:100%; margin-top: 10px; ">
+</div>
+
+<!-- About Us Section -->
+<div id="about" class="about-section">
+    <div class="container">
+        <h2>About Us</h2>
+        <p>
+            At DrQuickBook, we aim to revolutionize the way appointments are scheduled by offering a seamless, user-friendly platform. 
+            Whether you're booking a doctor's visit, a meeting, or any professional consultation, DrQuickBook ensures convenience, 
+            efficiency, and simplicity for all users. 
+        </p>
+    </div>
+</div>
+
+<!-- Our Values Section -->
+<div id="values" class="values-section">
+    <div class="container">
+        <h2>Our Values</h2>
+        <p>
+            At the heart of DrQuickBook, we embrace the following values:
+        </p>
+        <ul>
+            <li><strong>Customer First:</strong> We prioritize the needs and convenience of our users above all else.</li>
+            <li><strong>Innovation:</strong> Continuously improving to offer cutting-edge solutions for modern scheduling needs.</li>
+            <li><strong>Transparency:</strong> Providing clear, reliable, and trustworthy services.</li>
+            <li><strong>Accessibility:</strong> Ensuring everyone can manage appointments, anytime, anywhere.</li>
+        </ul>
+    </div>
+</div>
+
+<!-- Our Merits Section -->
+<div id="service" class="merits-section">
+    <div class="container">
+        <h2>What DrQuickBook Offers</h2>
+        <div class="merit-boxes">
+            <div class="merit-box">
+                <h3>Easy Scheduling</h3>
+                <p>"DrQuickBook makes scheduling appointments easy. Users can quickly book, reschedule, or cancel appointments with just a few clicks, all through a simple, user-friendly platform.”</p>
+            </div>
+            <div class="merit-box">
+                <h3>24/7 Access</h3>
+                <p>"DrQuickBook is easy to use for everyone, no matter your tech skills. Whether on desktop or mobile, you can schedule appointments anytime, anywhere."</p>
+            </div>
+            <div class="merit-box">
+                <h3>Custom Reminders</h3>
+                <p>“"DrQuickBook helps you stay on track with custom reminders. Set notifications via email, SMS, or push, and choose when you want to be reminded—whether it’s a day before or an hour ahead."</p>
+            </div>
+            <div class="merit-box">
+                <h3>Secure Platform</h3>
+                <p>"DrQuickBook keeps your data safe with advanced encryption and secure login options, including two-factor authentication. Your personal and appointment information is protected, giving you peace of mind."</p>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- Team Members Section -->
+<div id="team" class="team-section">
+    <div class="container">
+        <h2>Meet the Team</h2>
+        <div class="team-cards">
+            <div class="team-card">
+                <img src="element/fid.jpg">
+                <h3>Fathima Fida</h3>
+                <p>Fida contributed to the overall project and ensured smooth execution.</p>
+            </div>
+            <div class="team-card">
+                <img src="element/lib.jpg">
+                <h3>Liba Shiril</h3>
+                <p>Liba played a key role in designing the platform.</p>
+            </div>
+            <div class="team-card">
+                <img src="element/sne.jpg">
+                <h3>Sneha</h3>
+                <p>Sneha supported design and user experience improvements.</p>
+            </div>
+            <div class="team-card">
+                <img src="element/ane.jpg">
+                <h3>Aneena</h3>
+                <p>Aneena supported testing to maintain platform quality..</p>
+            </div>
+            <div class="team-card">
+                <img src="element/abhi.jpg">
+                <h3>Abhirami</h3>
+                <p>Abhirami assisted in quality assurance and debugging.</p>
+            </div>
+        </div>
+    </div>
+</div>
+   <!-- Footer Section -->
+   <footer>
+    <div class="container">
+        <div class="footer-content">
+            <div class="footer-logo">
+                <img src="element/logo.png" alt="QuickBook Logo" width="125px">
+            </div>
+            <div class="footer-nav">
+                <ul>
+                    <li><a href="#home">Home</a></li>
+                    <li><a href="#about">About</a></li>
+                    <li><a href="#values">Our Values</a></li>
+                    <li><a href="#service">Services</a></li>
+                    <li><a href="#faq">FAQs</a></li>
+                </ul>
+            </div>
+            <div class="footer-info">
+                <p>&copy; 2025 DrQuickBook. All rights reserved.</p>
+                <ul>
+                    <li><a href="privacy.html">Privacy Policy</a></li>
+                    <li><a href="terms.html">Terms of Service</a></li>
+                </ul>
+            </div>
+        </div>
+        <div class="footer-about">
+            <p><strong>About DrQuickBook</strong></p>
+            <p>
+                DrQuickBook is a revolutionary platform designed to simplify the way appointments are scheduled in hospitals and clinics. We aim to provide a seamless, user-friendly experience for both patients and healthcare providers.
+            </p>
+        </div>
+        <div class="footer-contact">
+            <p><strong>Contact Us</strong></p>
+            <p>If you have any questions or need assistance, feel free to reach out:</p>
+            <p>Email: <a href="mailto:support@drquickbook.com">support@drquickbook.com</a></p>
+        </div>
+    </div>
+</footer>
+<script src="script.js"></script>
+</body>
+</html>
